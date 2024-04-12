@@ -9,13 +9,13 @@ import SwiftUI
 
 struct OnboardingScreen: View {
     
-    let item: OnboardingItem
+    let item: OnboardingModel
     
     var body: some View {
 
             
         VStack(spacing:20){
-Spacer()
+            Spacer()
             Text(
                 item.title
             )
@@ -29,25 +29,15 @@ Spacer()
             .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
             .foregroundStyle(.gray)
             .padding(.bottom, 100)
-        
-           
             }
         .padding(30)
-      
-     
-        
-       
-        
-            
-        
-        
     }
 }
 
 
 #Preview {
     OnboardingScreen(
-        item: OnboardingItem(
+        item: OnboardingModel(
             title: "Track your cryptocurrency portfolio in realtime",
             description: "All your cryptocurrency investments in one place with realtime market price. "
         )
