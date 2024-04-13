@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct OnboardingScreen: View {
+struct OnboardingTabView: View {
     
     let item: OnboardingModel
     
@@ -36,7 +36,7 @@ struct OnboardingScreen: View {
 
 
 #Preview {
-    OnboardingScreen(
+    OnboardingTabView(
         item: OnboardingModel(
             title: "Track your cryptocurrency portfolio in realtime",
             description: "All your cryptocurrency investments in one place with realtime market price. "
