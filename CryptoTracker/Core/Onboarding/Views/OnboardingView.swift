@@ -9,6 +9,9 @@ import SwiftUI
 
 
 struct OnboardingView: View {
+
+    @AppStorage("new_user") var isNewUser:Bool?
+    
     
     @State var selctedTab:Int = 0
     @State var tabs:[Int] = [
@@ -22,62 +25,7 @@ struct OnboardingView: View {
     var body: some View {
         
         ZStack{
-            VStack{
-                Spacer()
-                
-                Image(
-                    "crypto_guru"
-                )
-                .resizable()
-                .aspectRatio(
-                    contentMode: .fit
-                )
-                .frame(
-                    maxWidth: 300,
-                    maxHeight: 300
-                )
-                .padding(
-                    20
-                )
-                .padding(
-                    .bottom,
-                    200
-                )
-                
-                
-                Button(action: {
-                    
-                },
-                       label: {
-                    Text(
-                        "Get Started"
-                    )
-                    .frame(
-                        maxWidth: 150
-                    )
-                    .font(
-                        .headline
-                    )
-                    .fontWeight(
-                        .bold
-                    )
-                    .foregroundColor(
-                        .white
-                    )
-                    .padding()
-                    .padding(
-                        .horizontal,
-                        20
-                    )
-                    .background(
-                        Capsule()
-                    )
-                })
-                .padding(
-                    .bottom,
-                    50
-                )
-            }
+            
             
             
             VStack{
@@ -85,7 +33,7 @@ struct OnboardingView: View {
                 TabView(
                     selection: $selctedTab
                 ){
-                    OnboardingScreen(
+                    OnboardingTabView(
                         item:  OnboardingModel(
                             title: "Track your cryptocurrency portfolio in realtime",
                             description: "Keep track of your profits, losses and portfolio valuation in one place."
@@ -95,7 +43,7 @@ struct OnboardingView: View {
                         0
                     )
                     
-                    OnboardingScreen(
+                    OnboardingTabView(
                         item:  OnboardingModel(
                             title: "Keep up-to-date with market trends",
                             description: "SwiftCoin lets you track over 1000+ cryptocurrencies"
@@ -105,7 +53,7 @@ struct OnboardingView: View {
                         1
                     )
                     
-                    OnboardingScreen(
+                    OnboardingTabView(
                         item:  OnboardingModel(
                             title: "Get notifications on significant market events.",
                             description: "Set alarms for price movements which are important to your portfolio."
@@ -138,6 +86,63 @@ struct OnboardingView: View {
                                         }
                 }
                 }
+            
+            VStack{
+                Spacer()
+                
+                Image(
+                    "crypto_guru"
+                )
+                .resizable()
+                .aspectRatio(
+                    contentMode: .fit
+                )
+                .frame(
+                    maxWidth: 300,
+                    maxHeight: 300
+                )
+                .padding(
+                    20
+                )
+                .padding(
+                    .bottom,
+                    200
+                )
+
+                
+                Button(action: {
+                    isNewUser = false
+                },
+                       label: {
+                    Text(
+                        "Get Started"
+                    )
+                    .frame(
+                        maxWidth: 150
+                    )
+                    .font(
+                        .headline
+                    )
+                    .fontWeight(
+                        .bold
+                    )
+                    .foregroundColor(
+                        .white
+                    )
+                    .padding()
+                    .padding(
+                        .horizontal,
+                        20
+                    )
+                    .background(
+                        Capsule()
+                    )
+                })
+                .padding(
+                    .bottom,
+                    50
+                )
+            }
  
             }
         
