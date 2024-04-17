@@ -19,6 +19,7 @@
 		CEAF09452BC9091E00DF54A0 /* CoinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF09442BC9091E00DF54A0 /* CoinModel.swift */; };
 		CEAF09482BC9295800DF54A0 /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF09472BC9295800DF54A0 /* PreviewProvider.swift */; };
 		CEAF094A2BC92C1D00DF54A0 /* CoinRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF09492BC92C1D00DF54A0 /* CoinRowView.swift */; };
+		CEF078A62BCFE63D007AF2CF /* CoinDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF078A52BCFE63D007AF2CF /* CoinDataService.swift */; };
 		CEFA38852BC9CEE9001E0BEB /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFA38842BC9CEE9001E0BEB /* Double.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 		CEAF09442BC9091E00DF54A0 /* CoinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinModel.swift; sourceTree = "<group>"; };
 		CEAF09472BC9295800DF54A0 /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
 		CEAF09492BC92C1D00DF54A0 /* CoinRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRowView.swift; sourceTree = "<group>"; };
+		CEF078A52BCFE63D007AF2CF /* CoinDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDataService.swift; sourceTree = "<group>"; };
 		CEFA38842BC9CEE9001E0BEB /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				CEAF09432BC908F900DF54A0 /* Models */,
+				CEF078A52BCFE63D007AF2CF /* CoinDataService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEF078A62BCFE63D007AF2CF /* CoinDataService.swift in Sources */,
 				CEAF094A2BC92C1D00DF54A0 /* CoinRowView.swift in Sources */,
 				CE5EE3572BCB23F900F6B535 /* HomeViewModel.swift in Sources */,
 				CE1291A42BC2D86200801F1F /* OnboardingTabView.swift in Sources */,

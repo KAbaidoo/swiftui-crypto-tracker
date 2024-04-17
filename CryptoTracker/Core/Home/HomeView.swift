@@ -19,7 +19,7 @@ struct HomeView: View {
                 Color.theme.background
                     .ignoresSafeArea()
                 VStack{
-                    
+                    coinListLabel
                 List {
                     ForEach(vm.coins){ coin in
                         CoinRowView(coin:coin)
@@ -41,6 +41,18 @@ struct HomeView_Previews: PreviewProvider {
                 .navigationBarHidden(true)
         }
         .environmentObject(dev.homeVM)
+    }
+}
+
+extension HomeView {
+    private var coinListLabel: some View{
+        HStack{
+            Text("Holdings")
+            Spacer()
+            Text("Value (Change)")
+        }.font(.caption)
+            .foregroundColor(Color.theme.secondaryText)
+            .padding(.horizontal,30)
     }
 }
 
