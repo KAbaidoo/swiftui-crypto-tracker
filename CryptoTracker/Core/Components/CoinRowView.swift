@@ -29,7 +29,7 @@ extension CoinRowView{
     
     private var coinWithHoldings:some View{
         HStack{
-            Circle()
+            CoinImageView(coin: coin)
                 .frame(width: 40, height:40)
             
             // Coin and holdings

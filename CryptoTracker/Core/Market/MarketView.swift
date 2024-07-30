@@ -1,16 +1,15 @@
 //
-//  ContentView.swift
+//  MarketView.swift
 //  CryptoTracker
 //
-//  Created by kobby on 07/04/2024.
+//  Created by kobby on 01/06/2024.
 //
 
 import SwiftUI
 
-struct HomeView: View {
+struct MarketView: View {
     
     @EnvironmentObject private var vm: HomeViewModel
-    @AppStorage("new_user") var isNewUser:Bool?
     
     var body: some View {
        
@@ -18,7 +17,9 @@ struct HomeView: View {
 //                backround layer
                 Color.theme.background
                     .ignoresSafeArea()
+               
                 VStack{
+                    SearchBarView(searchText: $vm.searchText)
                     coinListLabel
                 List {
                     ForEach(vm.coins){ coin in
@@ -34,7 +35,7 @@ struct HomeView: View {
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
+struct MarketView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             HomeView()
@@ -44,7 +45,7 @@ struct HomeView_Previews: PreviewProvider {
     }
 }
 
-extension HomeView {
+extension MarketView {
     private var coinListLabel: some View{
         HStack{
             Text("Holdings")
@@ -55,6 +56,3 @@ extension HomeView {
             .padding(.horizontal,30)
     }
 }
-
-
-
