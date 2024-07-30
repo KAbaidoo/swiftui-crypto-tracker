@@ -9,10 +9,8 @@ import SwiftUI
 
 
 struct OnboardingView: View {
-
+    
     @AppStorage("new_user") var isNewUser:Bool?
-    
-    
     @State var selctedTab:Int = 0
     @State var tabs:[Int] = [
         0,
@@ -22,12 +20,10 @@ struct OnboardingView: View {
     @State var index:Int = 0
     
     
+    
     var body: some View {
         
         ZStack{
-            
-            
-            
             VStack{
                 
                 TabView(
@@ -68,24 +64,22 @@ struct OnboardingView: View {
                         indexDisplayMode: .always
                     )
                 )
-                
-                
             }
             .onAppear{
                 UIPageControl.appearance().currentPageIndicatorTintColor = UIColor.accent
                 UIPageControl.appearance().pageIndicatorTintColor = UIColor.gray
                 
                 Timer.scheduledTimer(withTimeInterval: 2.5, repeats: true) { (Timer) in
-                                        withAnimation(
-                                            Animation
-                                                .easeInOut(
-                                                    duration: 2.0
-                                                ).repeatForever()
-                                        ){
-                                            next()
-                                        }
+                    withAnimation(
+                        Animation
+                            .easeInOut(
+                                duration: 2.0
+                            ).repeatForever()
+                    ){
+                        next()
+                    }
                 }
-                }
+            }
             
             VStack{
                 Spacer()
@@ -108,10 +102,11 @@ struct OnboardingView: View {
                     .bottom,
                     200
                 )
-
+                
                 
                 Button(action: {
                     isNewUser = false
+                    
                 },
                        label: {
                     Text(
@@ -143,8 +138,8 @@ struct OnboardingView: View {
                     50
                 )
             }
- 
-            }
+            
+        }
         
     }
     

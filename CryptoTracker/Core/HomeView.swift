@@ -9,10 +9,35 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack{
+            Color.theme.background
+                .ignoresSafeArea()
+            
+            VStack{
+                TabView{
+                    NavigationStack{
+                        PorfolioView()
+                    }
+                    .tabItem { Label("Portfolio", systemImage: "chart.pie.fill") }
+                    
+                    NavigationStack{
+                        MarketView()
+                    }
+                    .tabItem { Label("Market", systemImage: "chart.bar.xaxis") }
+                    
+                }
+        
+            }
+         
+            
+        }
+        
     }
 }
 
-#Preview {
-    HomeView()
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+            HomeView()
+        .environmentObject(dev.homeVM)
+    }
 }

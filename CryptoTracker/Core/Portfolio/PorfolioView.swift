@@ -21,11 +21,10 @@ struct PorfolioView: View {
                 
                 VStack{
                     PortfolioCardView()
-            
                     coinListLabel
                 List {
                     ForEach(vm.coins){ coin in
-                        CoinRowView(coin:coin)
+                        CoinRowView(coin:coin, showHoldings: true)
                     }
                 }
                 .listStyle(PlainListStyle())
@@ -33,17 +32,15 @@ struct PorfolioView: View {
                 Spacer(minLength: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/)
                 }
                 
-            }.onAppear{
-//                isNewUser = false
             }
+            .navigationTitle("Portfolio")
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
+struct PorfolioView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
+        NavigationStack{
             PorfolioView()
-                .navigationBarHidden(true)
         }
         .environmentObject(dev.homeVM)
     }
@@ -52,9 +49,12 @@ struct HomeView_Previews: PreviewProvider {
 extension PorfolioView {
     private var coinListLabel: some View{
         HStack{
-            Text("Holdings")
-            Spacer()
-            Text("Value (Change)")
+            Text("Coin")
+                .frame(width: UIScreen.main.bounds.width / 3.5, alignment: .leading)
+            Text("Holdings (Value)")
+                .frame(width: UIScreen.main.bounds.width / 3.5, alignment: .center)
+            Text("Price (Change)")
+                .frame(width: UIScreen.main.bounds.width / 3.5, alignment: .trailing)
         }.font(.caption)
             .foregroundColor(Color.theme.secondaryText)
             .padding(.horizontal,30)

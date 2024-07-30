@@ -12,20 +12,21 @@ struct CryptoTrackerApp: App {
     
     @AppStorage("new_user") var isNewUser:Bool = true
     @StateObject var vm = HomeViewModel()
-    
+
     let transition: AnyTransition = .asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading))
        
     var body: some Scene {
             
             WindowGroup {
-                NavigationView {
+
                 if !isNewUser {
                         HomeView()
                             .transition(transition)
+                            .environmentObject(vm)
                     } else {
                         OnboardingView()
                     }
-                }.environmentObject(vm)
+              
                 }
             
         }

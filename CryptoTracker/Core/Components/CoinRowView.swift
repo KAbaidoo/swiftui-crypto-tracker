@@ -8,12 +8,18 @@
 import SwiftUI
 
 struct CoinRowView: View {
+    
     let coin: CoinModel
+    let showHoldings: Bool
     var body: some View {
         HStack{
             coinWithHoldings
+            if showHoldings {
+                Spacer()
+                holdingsWithValue
+            }
             Spacer()
-            holdingValueWithChange
+            valueWithChange
         }
     }
 }
@@ -21,7 +27,7 @@ struct CoinRowView: View {
 
 struct CoinRowView_Preview: PreviewProvider{
     static var previews: some View{
-        CoinRowView(coin: dev.coin)
+        CoinRowView(coin: dev.coin, showHoldings: true)
     }
 }
 
@@ -34,16 +40,32 @@ extension CoinRowView{
             
             // Coin and holdings
             VStack(alignment: .leading){
-                Text(coin.name)
+                Text(coin.symbol.uppercased())
                     .font(.headline)
-                Text("\((coin.currentHoldings ?? 0.0).asNumberString()) \(coin.symbol.uppercased())")
-                    .font(.caption)
-                    .foregroundColor(Color.theme.secondaryText)
+                
             }
         }
     }
+    private var holdingsWithValue:some View{
+      
+            VStack(alignment: .trailing){
+                Text("\(coin.currentHoldingsValue.asCurrencyWith2Decimals())")
+                    .font(.headline)
+                
+                HStack{
+                    Text("\((coin.currentHoldings ?? 0.0).asNumberString()) \(coin.symbol.uppercased())")
+                        .font(.caption)
+                        .foregroundColor(Color.theme.secondaryText)
+                }.font(.caption)
+                    .foregroundColor((coin.priceChangePercentage24H ?? 0 >= 0) ?
+                        Color.theme.green :
+                         Color.theme.red
+                     )
+            }
         
-        private var holdingValueWithChange:some View{
+    }
+        
+        private var valueWithChange:some View{
           
                 VStack(alignment: .trailing){
                     Text("\(coin.currentHoldingsValue.asCurrencyWith2Decimals())")

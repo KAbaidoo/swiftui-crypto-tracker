@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MarketView: View {
     
-    @EnvironmentObject private var vm: HomeViewModel
+    @EnvironmentObject private var viewModel: HomeViewModel
     
     var body: some View {
        
@@ -19,11 +19,11 @@ struct MarketView: View {
                     .ignoresSafeArea()
                
                 VStack{
-                    SearchBarView(searchText: $vm.searchText)
+                    SearchBarView(searchText: $viewModel.searchText)
                     coinListLabel
                 List {
-                    ForEach(vm.coins){ coin in
-                        CoinRowView(coin:coin)
+                    ForEach(viewModel.coins){ coin in
+                        CoinRowView(coin:coin, showHoldings: false)
                     }
                 }
                 .listStyle(PlainListStyle())
@@ -32,14 +32,14 @@ struct MarketView: View {
                 }
                 
             }
+            .navigationTitle("Markets")
     }
 }
 
 struct MarketView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            HomeView()
-                .navigationBarHidden(true)
+        NavigationStack{
+            MarketView()
         }
         .environmentObject(dev.homeVM)
     }
@@ -48,9 +48,40 @@ struct MarketView_Previews: PreviewProvider {
 extension MarketView {
     private var coinListLabel: some View{
         HStack{
-            Text("Holdings")
+            HStack(spacing: 4) {
+                Text("Coin")
+                Image(systemName: "chevron.down")
+                    .opacity((viewModel.sortOption == .rank || viewModel.sortOption == .rankReversed) ? 1.0 : 0.0)
+                    .rotationEffect(Angle(degrees: viewModel.sortOption == .rank ? 0 : 180))
+            }
+            .onTapGesture {
+                withAnimation(.default) {
+                    viewModel.sortOption = viewModel.sortOption == .rank ? .rankReversed : .rank
+                }
+            }
             Spacer()
-            Text("Value (Change)")
+
+            HStack(spacing: 4) {
+                Text("Price")
+                Image(systemName: "chevron.down")
+                    .opacity((viewModel.sortOption == .price || viewModel.sortOption == .priceReversed) ? 1.0 : 0.0)
+                    .rotationEffect(Angle(degrees: viewModel.sortOption == .price ? 0 : 180))
+            }
+            .frame(width: UIScreen.main.bounds.width / 3.5, alignment: .trailing)
+            .onTapGesture {
+                withAnimation(.default) {
+                    viewModel.sortOption = viewModel.sortOption == .price ? .priceReversed : .price
+                }
+            }
+            
+            Button(action: {
+                withAnimation(.linear(duration: 2.0)) {
+                    viewModel.reloadData()
+                }
+            }, label: {
+                Image(systemName: "goforward")
+            })
+            .rotationEffect(Angle(degrees: viewModel.isLoading ? 360 : 0), anchor: .center)
         }.font(.caption)
             .foregroundColor(Color.theme.secondaryText)
             .padding(.horizontal,30)
