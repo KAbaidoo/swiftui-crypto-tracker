@@ -42,8 +42,18 @@ struct DetailView:View {
     }
     var body: some View {
         ScrollView{
-            VStack{
-                
+            VStack {
+               
+                VStack(spacing: 20) {
+                    overviewTitle
+                    Divider()
+                    descriptionSection
+                    overviewGrid
+                    additionalTitle
+                    Divider()
+                    additionalGrid
+                }
+                .padding()
             }
             
         }
@@ -61,6 +71,7 @@ struct DetailView:View {
     }
 }
 
+
 extension DetailView {
     private var navigationBarTrailingItems: some View {
         HStack {
@@ -76,7 +87,7 @@ extension DetailView {
         Text("Overview")
             .font(.title)
             .bold()
-            .foregroundColor(Color.theme.accent)
+            .foregroundColor(Color.theme.secondaryText)
             .frame(maxWidth: .infinity, alignment: .leading)
         
     }
@@ -85,7 +96,7 @@ extension DetailView {
         Text("Additional Details")
             .font(.title)
             .bold()
-            .foregroundColor(Color.theme.accent)
+            .foregroundColor(Color.theme.secondaryText)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
     
@@ -124,6 +135,19 @@ extension DetailView {
             pinnedViews: [],
             content: {
                 ForEach(viewModel.overviewStatistics) { stat in
+                    StatisticView(stat: stat)
+                }
+        })
+    }
+    
+    private var additionalGrid: some View {
+        LazyVGrid(
+            columns: columns,
+            alignment: .leading,
+            spacing: spacing,
+            pinnedViews: [],
+            content: {
+                ForEach(viewModel.additionalStatistics) { stat in
                     StatisticView(stat: stat)
                 }
         })

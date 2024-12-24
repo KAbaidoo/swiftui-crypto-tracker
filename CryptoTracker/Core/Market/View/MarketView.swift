@@ -23,11 +23,13 @@ struct MarketView: View {
                     coinListLabel
                 List {
                     ForEach(viewModel.coins){ coin in
-                        CoinRowView(coin:coin, showHoldings: false)
+                        NavigationLink(destination: DetailView(coin: coin)) {
+                            CoinRowView(coin: coin, showHoldings: false)
+                        }
                     }
                 }
                 .listStyle(PlainListStyle())
-                
+               
                 Spacer(minLength: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/)
                 }
                 

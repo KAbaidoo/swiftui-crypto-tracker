@@ -15,7 +15,6 @@ struct PorfolioView: View {
     var body: some View {
        
             ZStack{
-//                backround layer
                 Color.theme.background
                     .ignoresSafeArea()
                 

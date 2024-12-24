@@ -14,8 +14,8 @@ struct CoinRowView: View {
     var body: some View {
         HStack{
             coinWithHoldings
+            Spacer()
             if showHoldings {
-                Spacer()
                 holdingsWithValue
             }
             Spacer()
@@ -48,7 +48,7 @@ extension CoinRowView{
     }
     private var holdingsWithValue:some View{
       
-            VStack(alignment: .trailing){
+            VStack(alignment: .leading){
                 Text("\(coin.currentHoldingsValue.asCurrencyWith2Decimals())")
                     .font(.headline)
                 
@@ -68,10 +68,10 @@ extension CoinRowView{
         private var valueWithChange:some View{
           
                 VStack(alignment: .trailing){
-                    Text("\(coin.currentHoldingsValue.asCurrencyWith2Decimals())")
+                    Text("\(coin.currentPrice.asCurrencyWith2Decimals())")
                         .font(.headline)
                     HStack{
-                        Text("\(coin.currentHoldingsValueChange.asCurrencyWith2Decimals())")
+                        Text("\((coin.priceChange24H ?? 0.0).asCurrencyWith2Decimals())")
                         Text("\((coin.priceChangePercentage24H ?? 0.0).asPercentString())")
                             
                     }.font(.caption)
