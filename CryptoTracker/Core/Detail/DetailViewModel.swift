@@ -91,15 +91,8 @@ class DetailViewModel: ObservableObject{
         let marketCapPercentChange = coinModel.marketCapChangePercentage24H
         let marketCapChangeStat = StatisticModel(title: "24h Market Cap Change", value: marketCapChange, percentageChange: marketCapPercentChange)
         
-        let blockTime = coinDetailModel?.blockTimeInMinutes ?? 0
-        let blockTimeString = blockTime == 0 ? "n/a" : "\(blockTime)"
-        let blockStat = StatisticModel(title: "Block Time", value: blockTimeString)
-        
-        let hashing = coinDetailModel?.hashingAlgorithm ?? "n/a"
-        let hashingStat = StatisticModel(title: "Hashing Algorithm", value: hashing)
-        
         let additionalArray: [StatisticModel] = [
-            highStat, lowStat, priceChangeStat, marketCapChangeStat, blockStat, hashingStat
+            highStat, lowStat, priceChangeStat, marketCapChangeStat
         ]
         return additionalArray
     }

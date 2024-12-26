@@ -12,7 +12,7 @@ struct ChartView: View {
     private let data: [Double]
     private let maxY: Double
     private let minY: Double
-    private let chartLineColor: Color
+    
     private let startDate: Date
     private let endDate: Date
     @State private var percentage: CGFloat = 0
@@ -21,9 +21,6 @@ struct ChartView: View {
         data = coin.sparklineIn7D?.price ?? []
         maxY = data.max() ?? 0
         minY = data.min() ?? 0
-        
-        let priceChange = (data.last ?? 0) - (data.first ?? 0)
-        chartLineColor = priceChange > 0 ? Color.theme.green : Color.theme.red
         
         endDate = Date(coinGeckoString: coin.lastUpdated ?? "")
         startDate = endDate.addingTimeInterval(-7*24*60*60)
@@ -35,9 +32,32 @@ struct ChartView: View {
         VStack{
             
             chartView
+                .padding(5)
                 .frame(height: 200)
+                .background(chartBackground)
+                .overlay(chartYAxis.padding(.horizontal, 4), alignment: .leading)
+                
+             
             
-        }
+            chartDateLabels
+                .padding(.horizontal, 4)
+            
+        }.font(.caption)
+            .foregroundColor(Color.white.opacity(0.5))
+            .padding(.vertical)
+            .background(
+                RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
+                .fill(
+                    LinearGradient(colors: [Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)),Color(#colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1))], startPoint: .topLeading, endPoint: .bottomTrailing))
+                .frame(width: .infinity,height: 260)
+                )
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    withAnimation(.linear(duration: 2.0)) {
+                        percentage = 1.0
+                    }
+                }
+            }
         
     }
 }
@@ -67,19 +87,40 @@ extension ChartView {
                     path.addLine(to: CGPoint(x: xPosition, y: yPosition))
                     
                 }
+             
             }
             .trim(from: 0, to: percentage)
-            .stroke(chartLineColor, style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round))
-            .font(.caption)
-            .foregroundColor(Color.theme.background)
-            .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                    withAnimation(.linear(duration: 2.0)) {
-                        percentage = 1.0
-                    }
-                }
-            }
-            
+            .stroke(Color.white.opacity(0.8), style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round))
+ 
         }
     }
+    
+    private var chartBackground: some View {
+        VStack {
+            Divider()
+            Spacer()
+            Divider()
+            Spacer()
+            Divider()
+        }
+    }
+    
+    private var chartYAxis: some View {
+        VStack {
+            Text(maxY.formattedWithAbbreviations())
+            Spacer()
+            Text(((maxY + minY) / 2).formattedWithAbbreviations())
+            Spacer()
+            Text(minY.formattedWithAbbreviations())
+        }
+    }
+    
+    private var chartDateLabels: some View {
+        HStack {
+            Text(startDate.asShortDateString())
+            Spacer()
+            Text(endDate.asShortDateString())
+        }
+    }
+
 }

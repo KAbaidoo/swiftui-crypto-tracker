@@ -35,7 +35,7 @@ struct DetailView:View {
         GridItem(.flexible()),
         GridItem(.flexible()),
     ]
-    private let spacing: CGFloat = 30
+    private let spacing: CGFloat = 20
     
     init(coin: CoinModel){
         _viewModel = StateObject(wrappedValue: DetailViewModel(coin: coin))
@@ -45,11 +45,9 @@ struct DetailView:View {
             VStack {
                
                 VStack(spacing: 20) {
-                    overviewTitle
+                    ChartView(coin: viewModel.coin)
                     Divider()
-                    descriptionSection
                     overviewGrid
-                    additionalTitle
                     Divider()
                     additionalGrid
                 }
@@ -90,41 +88,6 @@ extension DetailView {
             .foregroundColor(Color.theme.secondaryText)
             .frame(maxWidth: .infinity, alignment: .leading)
         
-    }
-    
-    private var additionalTitle: some View {
-        Text("Additional Details")
-            .font(.title)
-            .bold()
-            .foregroundColor(Color.theme.secondaryText)
-            .frame(maxWidth: .infinity, alignment: .leading)
-    }
-    
-    private var descriptionSection: some View {
-        ZStack {
-            if let coinDescription = viewModel.coinDescription,
-               !coinDescription.isEmpty {
-                VStack(alignment: .leading) {
-                    Text(coinDescription)
-                        .lineLimit(showFullDescription ? nil : 3)
-                        .font(.callout)
-                        .foregroundColor(Color.theme.secondaryText)
-
-                    Button(action: {
-                        withAnimation(.easeInOut) {
-                            showFullDescription.toggle()
-                        }
-                    }, label: {
-                        Text(showFullDescription ? "Less" : "Read more..")
-                            .font(.caption)
-                            .fontWeight(.bold)
-                            .padding(.vertical, 4)
-                    })
-                    .accentColor(.blue)
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-            }
-        }
     }
     
     private var overviewGrid: some View {
