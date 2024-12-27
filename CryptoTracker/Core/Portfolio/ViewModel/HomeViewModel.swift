@@ -17,6 +17,7 @@ class HomeViewModel : ObservableObject {
     @Published var sortOption: SortOption = .holdings
     
     private let coinDataServices = CoinDataService()
+    private let portfolioDataService = PortfolioDataService()
     private var cancellables = Set<AnyCancellable>()
     
     enum SortOption {
@@ -36,16 +37,10 @@ class HomeViewModel : ObservableObject {
     
     func addSubscribers(){
         
-        func reloadData() {
-            isLoading = true
-            coinDataServices.getCoins()
-            HapticManager.notification(type: .success)
-        }
-        
-        coinDataServices.$allCoins
-            .sink{ [weak self] (coins) in
-                self?.coins = coins
-            }.store(in: &cancellables)
+//        coinDataServices.$allCoins
+//            .sink{ [weak self] (coins) in
+//                self?.coins = coins
+//            }.store(in: &cancellables)
         
         // updates allCoins
         $searchText
@@ -57,7 +52,23 @@ class HomeViewModel : ObservableObject {
             }
             .store(in: &cancellables)
         
+        
+        $coins
+            .combineLatest(portfolioDataService.$savedEntities)
+            .map{ (coins, savedEntities) in
+                coins.compactMap { coin -> CoinModel? in
+                    guard let savedEntity = savedEntities.first(where: { $0.coinID == coin.id }) else { return nil }
+                    
+                    return coin.updateHoldings(amount: savedEntity.amount)
+                }
+            }.sink { [weak self] (updatedCoins) in
+                guard let self = self else { return }
+                self.portfolio = updatedCoins
+            }
+            .store(in: &cancellables)
+  
     }
+
     
     private func filterAndSortCoins(text: String, coins: [CoinModel], sort: SortOption) -> [CoinModel] {
         var updatedCoins = filterCoins(text: text, coins: coins)

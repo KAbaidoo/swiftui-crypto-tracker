@@ -62,22 +62,21 @@ struct DetailView:View {
         .navigationTitle(viewModel.coin.name)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                navigationBarTrailingItems
+                navigationBarTrailingItem
+         
             }
         }
-       
     }
 }
 
 
 extension DetailView {
-    private var navigationBarTrailingItems: some View {
-        HStack {
-            Text(viewModel.coin.symbol.uppercased())
+ 
+    private var navigationBarTrailingItem: some View {
+        Button(action: {}) {
+            Text("Add to Portfolio")
                 .font(.headline)
-                .foregroundColor(Color.theme.secondaryText)
-            CoinImageView(coin: viewModel.coin)
-                .frame(width: 25, height: 25)
+                .foregroundColor(Color.theme.primaryText)
         }
     }
     
