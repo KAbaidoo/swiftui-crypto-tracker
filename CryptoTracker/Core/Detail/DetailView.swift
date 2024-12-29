@@ -31,10 +31,13 @@ struct DetailView:View {
     
     @StateObject var viewModel: DetailViewModel
     @State private var showFullDescription: Bool = false
+    @State private var showEditPortfolio: Bool = false
+    
     private let columns: [GridItem] = [
         GridItem(.flexible()),
         GridItem(.flexible()),
     ]
+    
     private let spacing: CGFloat = 20
     
     init(coin: CoinModel){
@@ -59,6 +62,9 @@ struct DetailView:View {
             Color.theme.background
                 .ignoresSafeArea()
         )
+        .sheet(isPresented: $showEditPortfolio) {
+           
+        }
         .navigationTitle(viewModel.coin.name)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {

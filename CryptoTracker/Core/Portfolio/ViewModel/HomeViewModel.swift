@@ -102,6 +102,10 @@ class HomeViewModel : ObservableObject {
                     coin.id.lowercased().contains(lowercasedText)
         }
     }
+    
+    func updatePortfolio(coin: CoinModel, amount: Double) {
+        portfolioDataService.updatePortfolio(coin: coin, amount: amount)
+    }
 
     
 }

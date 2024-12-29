@@ -31,6 +31,9 @@
 		CEAF23EF2D1C058900082A16 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF23EE2D1C058900082A16 /* ChartView.swift */; };
 		CEAF23F12D1C109400082A16 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF23F02D1C108E00082A16 /* Date.swift */; };
 		CEAF23F92D1E883900082A16 /* PortfolioModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CEAF23F72D1E883900082A16 /* PortfolioModel.xcdatamodeld */; };
+		CEAF23FE2D213B6600082A16 /* EditPortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF23FD2D213B5A00082A16 /* EditPortfolioView.swift */; };
+		CEAF24002D213D9200082A16 /* XMarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF23FF2D213D9200082A16 /* XMarkButton.swift */; };
+		CEAF24022D213FC900082A16 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF24012D213FC900082A16 /* UIApplication.swift */; };
 		CEC7009D2C577AF3006FC102 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC7009C2C577AF3006FC102 /* DetailView.swift */; };
 		CEC7009F2C577CE2006FC102 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC7009E2C577CE2006FC102 /* DetailViewModel.swift */; };
 		CEC700A12C577E38006FC102 /* CoinDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC700A02C577E38006FC102 /* CoinDetailService.swift */; };
@@ -69,6 +72,9 @@
 		CEAF23EE2D1C058900082A16 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		CEAF23F02D1C108E00082A16 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		CEAF23F82D1E883900082A16 /* PortfolioModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PortfolioModel.xcdatamodel; sourceTree = "<group>"; };
+		CEAF23FD2D213B5A00082A16 /* EditPortfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPortfolioView.swift; sourceTree = "<group>"; };
+		CEAF23FF2D213D9200082A16 /* XMarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMarkButton.swift; sourceTree = "<group>"; };
+		CEAF24012D213FC900082A16 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		CEC7009C2C577AF3006FC102 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		CEC7009E2C577CE2006FC102 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		CEC700A02C577E38006FC102 /* CoinDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetailService.swift; sourceTree = "<group>"; };
@@ -147,6 +153,7 @@
 		CE1291A52BC2FB2D00801F1F /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				CEAF23FF2D213D9200082A16 /* XMarkButton.swift */,
 				CEAF09492BC92C1D00DF54A0 /* CoinRowView.swift */,
 				CE7784432BD177C400682D5A /* CoinImage */,
 				CE6A1AC12BD655C50065F3CF /* SearchBarView.swift */,
@@ -223,6 +230,7 @@
 		CE8307402C635FCF00856121 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CEAF23FD2D213B5A00082A16 /* EditPortfolioView.swift */,
 				CE1291922BC2D76E00801F1F /* PorfolioView.swift */,
 			);
 			path = Views;
@@ -283,6 +291,7 @@
 		CEAF09462BC928D500DF54A0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				CEAF24012D213FC900082A16 /* UIApplication.swift */,
 				CEAF23F02D1C108E00082A16 /* Date.swift */,
 				CEAF09472BC9295800DF54A0 /* PreviewProvider.swift */,
 				CEFA38842BC9CEE9001E0BEB /* Double.swift */,
@@ -380,6 +389,7 @@
 				CEE219A82C85B17600372F7D /* PortfolioDataService.swift in Sources */,
 				CE9B56E32C0AC59100137FBA /* MarketView.swift in Sources */,
 				CE1291A02BC2D7FC00801F1F /* OnboardingView.swift in Sources */,
+				CEAF24002D213D9200082A16 /* XMarkButton.swift in Sources */,
 				CEC700A72C58C745006FC102 /* StatisticModel.swift in Sources */,
 				CEC700A12C577E38006FC102 /* CoinDetailService.swift in Sources */,
 				CEA324FF2BCAE67000A3C687 /* Color.swift in Sources */,
@@ -395,10 +405,12 @@
 				CE9999212C1005D40016F9DB /* HomeView.swift in Sources */,
 				CEAF09482BC9295800DF54A0 /* PreviewProvider.swift in Sources */,
 				CE9DC40E2C73361100D12364 /* StatisticView.swift in Sources */,
+				CEAF23FE2D213B6600082A16 /* EditPortfolioView.swift in Sources */,
 				CEAF23EF2D1C058900082A16 /* ChartView.swift in Sources */,
 				CE7784472BD1784B00682D5A /* CoinImageViewModel.swift in Sources */,
 				CEF626322C5399E200FC34BC /* HapticManager.swift in Sources */,
 				CE7784452BD177EB00682D5A /* CoinImageView.swift in Sources */,
+				CEAF24022D213FC900082A16 /* UIApplication.swift in Sources */,
 				CEAF23F12D1C109400082A16 /* Date.swift in Sources */,
 				CEFA38852BC9CEE9001E0BEB /* Double.swift in Sources */,
 				CE7784422BD1700F00682D5A /* CoinImageService.swift in Sources */,
