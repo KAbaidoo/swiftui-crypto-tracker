@@ -15,13 +15,20 @@ struct EditPorfolioView: View {
     @State private var showCheckmark: Bool = false
     @State private var quantityText: String = ""
   
-    @EnvironmentObject private var vm: HomeViewModel
+//    @EnvironmentObject private var vm: HomeViewModel
 
     var body: some View {
        
             ZStack{
                 Color.theme.background
                     .ignoresSafeArea()
+                
+                VStack(alignment: .leading, spacing: 0) {
+                  
+//                    if selectedCoin != nil {
+                        portfolioInputSection
+//                    }
+                }
         
             }
             .navigationTitle("Edit Portfolio")
@@ -44,6 +51,33 @@ struct EditPorfolioView_Previews: PreviewProvider {
 }
 
 extension EditPorfolioView {
+    
+    private var portfolioInputSection: some View {
+        VStack(spacing: 20) {
+            HStack {
+                Text("Current price of \(selectedCoin?.symbol.uppercased() ?? ""):")
+                Spacer()
+                Text(selectedCoin?.currentPrice.asCurrencyWith6Decimals() ?? "")
+            }
+            Divider()
+            HStack {
+                Text("Amount holding:")
+                Spacer()
+                TextField("Ex: 1.4", text: $quantityText)
+                    .multilineTextAlignment(.trailing)
+                    .keyboardType(.decimalPad)
+            }
+            Divider()
+            HStack {
+                Text("Current value:")
+                Spacer()
+                Text(getCurrentValue().asCurrencyWith2Decimals())
+            }
+        }
+        .animation(.none)
+        .padding()
+        .font(.headline)
+    }
     
     private var trailingNavBarButtons: some View {
         HStack(spacing: 10) {
@@ -71,7 +105,7 @@ extension EditPorfolioView {
             else { return }
         
         // save to portfolio
-        vm.updatePortfolio(coin: coin, amount: amount)
+//        vm.updatePortfolio(coin: coin, amount: amount)
         
         // show checkmark
         withAnimation(.easeIn) {
@@ -89,5 +123,12 @@ extension EditPorfolioView {
             }
         }
         
+    }
+    
+    private func getCurrentValue() -> Double {
+        if let quantity = Double(quantityText) {
+            return quantity * (selectedCoin?.currentPrice ?? 0)
+        }
+        return 0
     }
 }
