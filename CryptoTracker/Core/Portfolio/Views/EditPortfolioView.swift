@@ -15,10 +15,14 @@ struct EditPorfolioView: View {
     @State private var showCheckmark: Bool = false
     @State private var quantityText: String = ""
   
-//    @EnvironmentObject private var vm: HomeViewModel
+    @EnvironmentObject private var vm: HomeViewModel
+    
+    init(selectedCoin: CoinModel) {
+        self.selectedCoin = selectedCoin
+    }
 
     var body: some View {
-       
+        NavigationView {
             ZStack{
                 Color.theme.background
                     .ignoresSafeArea()
@@ -40,12 +44,14 @@ struct EditPorfolioView: View {
                     trailingNavBarButtons
                 }
             })
+        }
+ 
     }
 }
 
 struct EditPorfolioView_Previews: PreviewProvider {
     static var previews: some View {
-        EditPorfolioView()
+        EditPorfolioView(selectedCoin: dev.coin)
             .environmentObject(dev.homeVM)
     }
 }

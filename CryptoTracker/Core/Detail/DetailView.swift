@@ -32,6 +32,7 @@ struct DetailView:View {
     @StateObject var viewModel: DetailViewModel
     @State private var showFullDescription: Bool = false
     @State private var showEditPortfolio: Bool = false
+    @State private var selectedCoin: CoinModel
     
     private let columns: [GridItem] = [
         GridItem(.flexible()),
@@ -41,8 +42,10 @@ struct DetailView:View {
     private let spacing: CGFloat = 20
     
     init(coin: CoinModel){
+        selectedCoin = coin
         _viewModel = StateObject(wrappedValue: DetailViewModel(coin: coin))
     }
+    
     var body: some View {
         ScrollView{
             VStack {
@@ -63,7 +66,7 @@ struct DetailView:View {
                 .ignoresSafeArea()
         )
         .sheet(isPresented: $showEditPortfolio) {
-           
+            EditPorfolioView(selectedCoin: selectedCoin)
         }
         .navigationTitle(viewModel.coin.name)
         .toolbar {
@@ -79,7 +82,9 @@ struct DetailView:View {
 extension DetailView {
  
     private var navigationBarTrailingItem: some View {
-        Button(action: {}) {
+        Button(action: {
+            showEditPortfolio.toggle()
+        }) {
             Text("Add to Portfolio")
                 .font(.headline)
                 .foregroundColor(Color.theme.primaryText)
