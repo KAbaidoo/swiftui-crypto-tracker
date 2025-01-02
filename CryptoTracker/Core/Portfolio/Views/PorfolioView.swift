@@ -22,7 +22,7 @@ struct PorfolioView: View {
                     PortfolioCardView()
                     coinListLabel
                 List {
-                    ForEach(vm.coins){ coin in
+                    ForEach(vm.portfolio){ coin in
                         CoinRowView(coin:coin, showHoldings: true)
                     }
                 }

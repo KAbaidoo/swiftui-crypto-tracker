@@ -66,7 +66,7 @@ struct DetailView:View {
                 .ignoresSafeArea()
         )
         .sheet(isPresented: $showEditPortfolio) {
-            EditPorfolioView(selectedCoin: selectedCoin)
+            EditPorfolioView(selectedCoin: selectedCoin, showEditPortfolio: $showEditPortfolio)
         }
         .navigationTitle(viewModel.coin.name)
         .toolbar {
