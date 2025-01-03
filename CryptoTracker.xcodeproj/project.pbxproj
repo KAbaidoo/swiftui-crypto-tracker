@@ -15,6 +15,7 @@
 		CE1291A22BC2D84400801F1F /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1291A12BC2D84400801F1F /* OnboardingModel.swift */; };
 		CE1291A42BC2D86200801F1F /* OnboardingTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1291A32BC2D86200801F1F /* OnboardingTabView.swift */; };
 		CE5749F12BD02A01003DFF50 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5749F02BD02A01003DFF50 /* NetworkingManager.swift */; };
+		CE5BE7592D27AE410094582F /* PortfolioContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE5BE7572D27AE410094582F /* PortfolioContainer.xcdatamodeld */; };
 		CE5EE3572BCB23F900F6B535 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5EE3562BCB23F900F6B535 /* HomeViewModel.swift */; };
 		CE6A1AC22BD655C50065F3CF /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A1AC12BD655C50065F3CF /* SearchBarView.swift */; };
 		CE7784422BD1700F00682D5A /* CoinImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7784412BD1700F00682D5A /* CoinImageService.swift */; };
@@ -30,7 +31,6 @@
 		CEAF094A2BC92C1D00DF54A0 /* CoinRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF09492BC92C1D00DF54A0 /* CoinRowView.swift */; };
 		CEAF23EF2D1C058900082A16 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF23EE2D1C058900082A16 /* ChartView.swift */; };
 		CEAF23F12D1C109400082A16 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF23F02D1C108E00082A16 /* Date.swift */; };
-		CEAF23F92D1E883900082A16 /* PortfolioModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CEAF23F72D1E883900082A16 /* PortfolioModel.xcdatamodeld */; };
 		CEAF23FE2D213B6600082A16 /* EditPortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF23FD2D213B5A00082A16 /* EditPortfolioView.swift */; };
 		CEAF24002D213D9200082A16 /* XMarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF23FF2D213D9200082A16 /* XMarkButton.swift */; };
 		CEAF24022D213FC900082A16 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF24012D213FC900082A16 /* UIApplication.swift */; };
@@ -56,6 +56,7 @@
 		CE1291A12BC2D84400801F1F /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		CE1291A32BC2D86200801F1F /* OnboardingTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTabView.swift; sourceTree = "<group>"; };
 		CE5749F02BD02A01003DFF50 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
+		CE5BE7582D27AE410094582F /* PortfolioContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PortfolioContainer.xcdatamodel; sourceTree = "<group>"; };
 		CE5EE3562BCB23F900F6B535 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		CE6A1AC12BD655C50065F3CF /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		CE7784412BD1700F00682D5A /* CoinImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinImageService.swift; sourceTree = "<group>"; };
@@ -71,7 +72,6 @@
 		CEAF09492BC92C1D00DF54A0 /* CoinRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRowView.swift; sourceTree = "<group>"; };
 		CEAF23EE2D1C058900082A16 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		CEAF23F02D1C108E00082A16 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		CEAF23F82D1E883900082A16 /* PortfolioModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PortfolioModel.xcdatamodel; sourceTree = "<group>"; };
 		CEAF23FD2D213B5A00082A16 /* EditPortfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPortfolioView.swift; sourceTree = "<group>"; };
 		CEAF23FF2D213D9200082A16 /* XMarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMarkButton.swift; sourceTree = "<group>"; };
 		CEAF24012D213FC900082A16 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
@@ -282,8 +282,8 @@
 			children = (
 				CEAF09442BC9091E00DF54A0 /* CoinModel.swift */,
 				CEC700A22C577F99006FC102 /* CoinDetailModel.swift */,
-				CEAF23F72D1E883900082A16 /* PortfolioModel.xcdatamodeld */,
 				CEC700A62C58C745006FC102 /* StatisticModel.swift */,
+				CE5BE7572D27AE410094582F /* PortfolioContainer.xcdatamodeld */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -380,7 +380,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEAF23F92D1E883900082A16 /* PortfolioModel.xcdatamodeld in Sources */,
 				CEF078A62BCFE63D007AF2CF /* CoinDataService.swift in Sources */,
 				CEAF094A2BC92C1D00DF54A0 /* CoinRowView.swift in Sources */,
 				CE5EE3572BCB23F900F6B535 /* HomeViewModel.swift in Sources */,
@@ -409,6 +408,7 @@
 				CEAF23EF2D1C058900082A16 /* ChartView.swift in Sources */,
 				CE7784472BD1784B00682D5A /* CoinImageViewModel.swift in Sources */,
 				CEF626322C5399E200FC34BC /* HapticManager.swift in Sources */,
+				CE5BE7592D27AE410094582F /* PortfolioContainer.xcdatamodeld in Sources */,
 				CE7784452BD177EB00682D5A /* CoinImageView.swift in Sources */,
 				CEAF24022D213FC900082A16 /* UIApplication.swift in Sources */,
 				CEAF23F12D1C109400082A16 /* Date.swift in Sources */,
@@ -622,13 +622,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		CEAF23F72D1E883900082A16 /* PortfolioModel.xcdatamodeld */ = {
+		CE5BE7572D27AE410094582F /* PortfolioContainer.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				CEAF23F82D1E883900082A16 /* PortfolioModel.xcdatamodel */,
+				CE5BE7582D27AE410094582F /* PortfolioContainer.xcdatamodel */,
 			);
-			currentVersion = CEAF23F82D1E883900082A16 /* PortfolioModel.xcdatamodel */;
-			path = PortfolioModel.xcdatamodeld;
+			currentVersion = CE5BE7582D27AE410094582F /* PortfolioContainer.xcdatamodel */;
+			path = PortfolioContainer.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

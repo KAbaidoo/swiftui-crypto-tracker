@@ -11,12 +11,14 @@ import CoreData
 class PortfolioDataService {
     
     private let container: NSPersistentContainer
-    private let containerName: String = "PortfolioModel"
+    private let containerName: String = "PortfolioContainer"
     private let entityName: String = "PortfolioEntity"
     
    @Published var savedEntities: [PortfolioEntity] = []
     
-    init(){
+    static let shared = PortfolioDataService()
+    
+    private init(){
         container = NSPersistentContainer(name: containerName)
         container.loadPersistentStores { (_, error) in
             if let error = error {
@@ -46,6 +48,7 @@ class PortfolioDataService {
         let request = NSFetchRequest<PortfolioEntity>(entityName: entityName)
         do {
             savedEntities = try container.viewContext.fetch(request)
+            print("Saved Entities: \(savedEntities.count)")
         } catch let error {
             print("Error fetching Portfolio Entities. \(error)")
         }

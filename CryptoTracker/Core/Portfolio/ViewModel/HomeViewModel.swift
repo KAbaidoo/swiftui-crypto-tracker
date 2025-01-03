@@ -17,7 +17,7 @@ class HomeViewModel : ObservableObject {
     @Published var sortOption: SortOption = .holdings
     
     private let coinDataServices = CoinDataService()
-    private let portfolioDataService = PortfolioDataService()
+    private let portfolioDataService = PortfolioDataService.shared
     private var cancellables = Set<AnyCancellable>()
     
     enum SortOption {
