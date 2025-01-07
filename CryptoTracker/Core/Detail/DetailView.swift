@@ -29,7 +29,7 @@ struct DetailView_Previews: PreviewProvider {
 
 struct DetailView:View {
     
-    @StateObject var viewModel: DetailViewModel
+    @StateObject var vm: DetailViewModel
     @State private var showFullDescription: Bool = false
     @State private var showEditPortfolio: Bool = false
     @State private var selectedCoin: CoinModel
@@ -43,7 +43,7 @@ struct DetailView:View {
     
     init(coin: CoinModel){
         selectedCoin = coin
-        _viewModel = StateObject(wrappedValue: DetailViewModel(coin: coin))
+        _vm = StateObject(wrappedValue: DetailViewModel(coin: coin))
     }
     
     var body: some View {
@@ -51,7 +51,7 @@ struct DetailView:View {
             VStack {
                
                 VStack(spacing: 20) {
-                    ChartView(coin: viewModel.coin)
+                    ChartView(coin: vm.coin)
                     Divider()
                     overviewGrid
                     Divider()
@@ -68,7 +68,7 @@ struct DetailView:View {
         .sheet(isPresented: $showEditPortfolio) {
             EditPorfolioView(selectedCoin: selectedCoin, showEditPortfolio: $showEditPortfolio)
         }
-        .navigationTitle(viewModel.coin.name)
+        .navigationTitle(vm.coin.name)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 navigationBarTrailingItem
@@ -107,7 +107,7 @@ extension DetailView {
             spacing: spacing,
             pinnedViews: [],
             content: {
-                ForEach(viewModel.overviewStatistics) { stat in
+                ForEach(vm.overviewStatistics) { stat in
                     StatisticView(stat: stat)
                 }
         })
@@ -120,7 +120,7 @@ extension DetailView {
             spacing: spacing,
             pinnedViews: [],
             content: {
-                ForEach(viewModel.additionalStatistics) { stat in
+                ForEach(vm.additionalStatistics) { stat in
                     StatisticView(stat: stat)
                 }
         })

@@ -16,14 +16,11 @@ struct EditPorfolioView: View {
     @State private var showCheckmark: Bool = false
     @State private var quantityText: String = ""
   
-   
-    @StateObject var vm: HomeViewModel
+    @EnvironmentObject private var vm: HomeViewModel
     
     init(selectedCoin: CoinModel, showEditPortfolio: Binding<Bool>) {
         self.selectedCoin = selectedCoin
         self._showEditPortfolio = showEditPortfolio
-        self._vm = StateObject(wrappedValue: HomeViewModel())
-        updateSelectedCoin()
     }
 
     var body: some View {
@@ -33,12 +30,11 @@ struct EditPorfolioView: View {
                     .ignoresSafeArea()
                 
                 VStack(alignment: .leading, spacing: 0) {
-                  
-//                    if selectedCoin != nil {
                         portfolioInputSection
-//                    }
                 }
-        
+            }
+            .onAppear {
+                updateSelectedCoin()
             }
             .navigationTitle("Edit Portfolio")
             .toolbar(content: {
@@ -49,7 +45,6 @@ struct EditPorfolioView: View {
                         Image(systemName: "xmark")
                             .font(.headline)
                     }
-
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     trailingNavBarButtons
@@ -70,12 +65,19 @@ struct EditPorfolioView_Previews: PreviewProvider {
 extension EditPorfolioView {
     
     private func updateSelectedCoin() {
+        print("Selected coin id:\(selectedCoin.id)")
+        print("Portfolio coin id:\(String(describing: vm.portfolio.first?.id))")
         
-        if let portfolioCoin = vm.portfolio.first(where: { $0.id == selectedCoin.id }),
+        if let portfolioCoin = vm.portfolio.first(where: {
+            
+           return $0.id == selectedCoin.id
+        }),
            let amount = portfolioCoin.currentHoldings {
             quantityText = "\(amount)"
+           
         } else {
             quantityText = ""
+           
         }
     }
     
@@ -117,7 +119,7 @@ extension EditPorfolioView {
                 Text("Save".uppercased())
             })
             .opacity(
-                (selectedCoin != nil && selectedCoin.currentHoldings != Double(quantityText)) ?
+                (selectedCoin.currentHoldings != Double(quantityText)) ?
                     1.0 : 0.0
             )
         }
