@@ -65,8 +65,6 @@ struct EditPorfolioView_Previews: PreviewProvider {
 extension EditPorfolioView {
     
     private func updateSelectedCoin() {
-        print("Selected coin id:\(selectedCoin.id)")
-        print("Portfolio coin id:\(String(describing: vm.portfolio.first?.id))")
         
         if let portfolioCoin = vm.portfolio.first(where: {
             
@@ -74,10 +72,8 @@ extension EditPorfolioView {
         }),
            let amount = portfolioCoin.currentHoldings {
             quantityText = "\(amount)"
-           
         } else {
             quantityText = ""
-           
         }
     }
     
