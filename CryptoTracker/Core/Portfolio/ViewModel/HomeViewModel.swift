@@ -58,7 +58,7 @@ class HomeViewModel : ObservableObject {
             .map{ (coins, savedEntities) in
                 coins.compactMap { coin -> CoinModel? in
                     guard let savedEntity = savedEntities.first(where: { $0.coinID == coin.id }) else { return nil }
-                    
+                   
                     return coin.updateHoldings(amount: savedEntity.amount)
                 }
             }.sink { [weak self] (updatedCoins) in
