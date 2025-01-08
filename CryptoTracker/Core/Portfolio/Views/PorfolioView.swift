@@ -10,29 +10,37 @@ import SwiftUI
 struct PorfolioView: View {
     @AppStorage("new_user") var isNewUser:Bool?
     @EnvironmentObject private var vm: HomeViewModel
-
+    
+    @State var selectedCoin: CoinModel? = nil
+    @State var showEditPortfolio: Bool = false
     
     var body: some View {
-       
-            ZStack{
-                Color.theme.background
-                    .ignoresSafeArea()
-                
-                VStack{
-                    PortfolioCardView()
-                    coinListLabel
+        
+        ZStack{
+            Color.theme.background
+                .ignoresSafeArea()
+            
+            VStack{
+                PortfolioCardView()
+                coinListLabel
                 List {
                     ForEach(vm.portfolio){ coin in
-                        CoinRowView(coin:coin, showHoldings: true)
+                        NavigationLink(destination: EditPorfolioView(selectedCoin: coin, showEditPortfolio: .constant(false))) {
+                            CoinRowView(coin:coin, showHoldings: true)
+                        }
+                      
+                    
+                           
                     }
                 }
                 .listStyle(PlainListStyle())
                 
                 Spacer(minLength: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/)
-                }
-                
             }
-            .navigationTitle("Portfolio")
+            
+            
+        }
+        .navigationTitle("Portfolio")
     }
 }
 
@@ -68,7 +76,7 @@ struct PortfolioCardView: View {
         RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
             .fill(
                 LinearGradient(colors: [Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)),Color(#colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1))], startPoint: .topLeading, endPoint: .bottomTrailing))
-//            .frame(width: .infinity,height: 200)
+        //            .frame(width: .infinity,height: 200)
             .padding()
     }
 }

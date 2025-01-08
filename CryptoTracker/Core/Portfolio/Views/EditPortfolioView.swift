@@ -38,14 +38,17 @@ struct EditPorfolioView: View {
             }
             .navigationTitle("Edit Portfolio")
             .toolbar(content: {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        showEditPortfolio.toggle()
-                    } label: {
-                        Image(systemName: "xmark")
-                            .font(.headline)
+                if showEditPortfolio {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button {
+                            showEditPortfolio.toggle()
+                        } label: {
+                            Image(systemName: "xmark")
+                                .font(.headline)
+                        }
                     }
                 }
+           
                 ToolbarItem(placement: .navigationBarTrailing) {
                     trailingNavBarButtons
                 }
