@@ -77,8 +77,8 @@ struct PortfolioCardView: View {
         RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
             .fill(
                 LinearGradient(colors: [Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)),Color(#colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1))], startPoint: .topLeading, endPoint: .bottomTrailing))
-        //            .frame(width: .infinity,height: 200)
+                    .frame(width: .infinity,height: 250)
             .padding()
-            .padding()
+            .padding(5)
     }
 }
