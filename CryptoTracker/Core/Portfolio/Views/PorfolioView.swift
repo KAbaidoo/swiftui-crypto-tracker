@@ -22,6 +22,7 @@ struct PorfolioView: View {
             
             VStack{
                 PortfolioCardView()
+                  
                 coinListLabel
                 List {
                     ForEach(vm.portfolio){ coin in
@@ -77,6 +78,7 @@ struct PortfolioCardView: View {
             .fill(
                 LinearGradient(colors: [Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)),Color(#colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1))], startPoint: .topLeading, endPoint: .bottomTrailing))
         //            .frame(width: .infinity,height: 200)
+            .padding()
             .padding()
     }
 }
