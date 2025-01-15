@@ -9,26 +9,21 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        ZStack{
-            Color.theme.background
-                .ignoresSafeArea()
-            
-            VStack{
-                TabView{
-                    NavigationStack{
+        NavigationStack{
+            ZStack{
+                Color.theme.background
+                    .ignoresSafeArea()
+                
+                VStack{
+                    TabView{
                         PorfolioView()
-                    }
-                    .tabItem { Label("Portfolio", systemImage: "chart.pie.fill") }
-                    
-                    NavigationStack{
+                            .tabItem { Label("Portfolio", systemImage: "chart.pie.fill") }
+                        
                         MarketView()
+                            .tabItem { Label("Market", systemImage: "chart.bar.xaxis") }
                     }
-                    .tabItem { Label("Market", systemImage: "chart.bar.xaxis") }
-                    
                 }
-        
             }
-         
         }
         
     }
