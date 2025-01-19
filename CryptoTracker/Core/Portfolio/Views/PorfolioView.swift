@@ -22,7 +22,8 @@ struct PorfolioView: View {
             
             VStack{
               
-                PortfolioCardView()
+                PortfolioCardView(portfolio: vm.portfolio)
+                
                 coinListLabel
                 List {
                     ForEach(vm.portfolio){ coin in
@@ -30,7 +31,6 @@ struct PorfolioView: View {
                             CoinRowView(coin:coin, showHoldings: true)
                         }
                       
-                    
                            
                     }
                 }
@@ -73,13 +73,8 @@ extension PorfolioView {
 
 
 struct PortfolioCardView: View {
-    let portfolio: [PortfolioAmount] = [
-        .init(coin: "BTC", amount: 79),
-        .init(coin: "XRP", amount: 73),
-        .init(coin: "DOGE", amount: 58),
-        .init(coin: "LTC", amount: 15),
-        .init(coin: "ETH", amount: 9),
-    ]
+    let portfolio: [CoinModel]
+    
     var body: some View {
         HStack{
             VStack{
@@ -93,11 +88,13 @@ struct PortfolioCardView: View {
                         .font(.callout)
                 }
                 Spacer()
-                Text("$15,0000")
+                
+                Text("\(getBalance().asCurrencyWith2Decimals())")
                     .font(.title)
                     .fontWeight(.bold)
                 Spacer()
-                Text("$5,986")
+                
+                Text("\(balancepPriceChange().asCurrencyWith2Decimals())")
                     .font(.caption)
             }
             .padding(.vertical)
@@ -116,5 +113,21 @@ struct PortfolioCardView: View {
         )
         .padding(20)
       
+    }
+    
+}
+
+
+extension PortfolioCardView {
+    
+    private func getBalance() -> Double {
+        return portfolio.reduce(0.0) { partialResult, coin in
+            partialResult + coin.currentHoldingsValue
+        }
+    }
+    private func balancepPriceChange() -> Double {
+        return portfolio.reduce(0.0) { partialResult, coin in
+            partialResult + coin.currentHoldingsValueChange
+        }
     }
 }

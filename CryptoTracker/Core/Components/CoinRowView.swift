@@ -38,7 +38,6 @@ extension CoinRowView{
             CoinImageView(coin: coin)
                 .frame(width: 40, height:40)
             
-            // Coin and holdings
             VStack(alignment: .leading){
                 Text(coin.symbol.uppercased())
                     .font(.headline)

@@ -9,20 +9,20 @@ import SwiftUI
 
 struct PieChartView: View {
     
-    let portfolio: [PortfolioAmount]
+    let portfolio: [CoinModel]
     
     var body: some View {
  
-            Chart(portfolio, id: \.coin){ item in
+        Chart(portfolio, id: \.symbol){ item in
                 SectorMark(
-                    angle: .value("Count", item.amount),
+                    angle: .value("Value", item.currentHoldingsValue),
                     innerRadius: .ratio(0.65),
                     angularInset: 2
                 )
                 .cornerRadius(8)
                 .foregroundStyle(Color.background.opacity(0.6))
                 .annotation(position: .overlay) {
-                    Text(item.coin)
+                    Text(item.symbol)
                         .foregroundStyle(Color.secondary)
                         .font(.caption)
                 }
@@ -40,12 +40,6 @@ struct PortfolioAmount{
 }
 
 #Preview {
-    let portfolio: [PortfolioAmount] = [
-        .init(coin: "BTC", amount: 79),
-        .init(coin: "XRP", amount: 73),
-        .init(coin: "DOGE", amount: 58),
-        .init(coin: "LTC", amount: 15),
-        .init(coin: "ETH", amount: 9),
-    ]
-    PieChartView(portfolio: portfolio)
+    
+//    PieChartView(portfolio: portfolio)
 }
