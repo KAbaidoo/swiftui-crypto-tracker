@@ -48,7 +48,6 @@ class PortfolioDataService {
         let request = NSFetchRequest<PortfolioEntity>(entityName: entityName)
         do {
             savedEntities = try container.viewContext.fetch(request)
-            print("Saved Entities: \(savedEntities.count)")
         } catch let error {
             print("Error fetching Portfolio Entities. \(error)")
         }

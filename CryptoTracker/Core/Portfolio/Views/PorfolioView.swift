@@ -94,8 +94,21 @@ struct PortfolioCardView: View {
                     .fontWeight(.bold)
                 Spacer()
                 
-                Text("\(balancepPriceChange().asCurrencyWith2Decimals())")
-                    .font(.caption)
+             
+                HStack(spacing: 4) {
+                    Text("\(balancePriceChange().asCurrencyWith2Decimals())")
+                        .font(.subheadline)
+                    
+                    Image(systemName: "triangle.fill")
+                        .font(.caption2)
+                        .rotationEffect(
+                            Angle(degrees:(balancePriceChange()) >= 0 ? 0 : 180))
+                    
+                    Text(percentagePriceChange().asPercentString())
+                        .font(.caption)
+                        .bold()
+                }
+                
             }
             .padding(.vertical)
             .foregroundColor(Color.background.opacity(0.8))
@@ -117,7 +130,7 @@ struct PortfolioCardView: View {
     
 }
 
-
+// MARK:- Functions
 extension PortfolioCardView {
     
     private func getBalance() -> Double {
@@ -125,9 +138,15 @@ extension PortfolioCardView {
             partialResult + coin.currentHoldingsValue
         }
     }
-    private func balancepPriceChange() -> Double {
+    private func balancePriceChange() -> Double {
         return portfolio.reduce(0.0) { partialResult, coin in
             partialResult + coin.currentHoldingsValueChange
+        }
+    }
+   
+    private func percentagePriceChange() -> Double {
+        return portfolio.reduce(0.0) { partialResult, coin in
+            partialResult + (coin.priceChangePercentage24H ?? 0.0)
         }
     }
 }
