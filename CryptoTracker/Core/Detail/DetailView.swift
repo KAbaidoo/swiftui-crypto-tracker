@@ -91,15 +91,7 @@ extension DetailView {
         }
     }
     
-    private var overviewTitle: some View {
-        Text("Overview")
-            .font(.title)
-            .bold()
-            .foregroundColor(Color.theme.secondaryText)
-            .frame(maxWidth: .infinity, alignment: .leading)
-        
-    }
-    
+
     private var overviewGrid: some View {
         LazyVGrid(
             columns: columns,

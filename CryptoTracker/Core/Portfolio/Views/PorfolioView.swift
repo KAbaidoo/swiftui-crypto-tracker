@@ -84,8 +84,8 @@ struct PortfolioCardView: View {
                     Text("USD")
                         .font(.headline)
                         .fontWeight(.bold)
-                    Image(systemName: "chevron.down")
-                        .font(.callout)
+//                    Image(systemName: "chevron.down")
+//                        .font(.callout)
                 }
                 Spacer()
                 
