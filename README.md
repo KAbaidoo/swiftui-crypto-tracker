@@ -1,6 +1,6 @@
 # Crypto Portfolio Tracker
 
-A modern cryptocurrency portfolio tracking application built with SwiftUI, featuring real-time market data visualization and portfolio management capabilities.
+A modern cryptocurrency portfolio tracking application built with SwiftUI, featuring real-time market data visualization and portfolio management capabilities. Powered by CoinGecko's comprehensive cryptocurrency API.
 
 ![Design Credit](https://img.shields.io/badge/Design-Sanket%20Pal-blue)
 ![Platform](https://img.shields.io/badge/Platform-iOS%2017-orange)
@@ -28,21 +28,6 @@ A modern cryptocurrency portfolio tracking application built with SwiftUI, featu
 - Xcode 15.0 or later
 - Swift 5.9 or later
 
-## Installation
-
-1. Clone the repository
-```bash
-git clone [your-repository-url]
-```
-
-2. Open the project in Xcode
-```bash
-cd [project-directory]
-open CryptoPortfolioTracker.xcodeproj
-```
-
-3. Build and run the project
-
 ## Architecture
 
 The project follows the MVVM (Model-View-ViewModel) architecture pattern:
@@ -60,18 +45,7 @@ The project follows the MVVM (Model-View-ViewModel) architecture pattern:
 
 - UI/UX Design inspired by [Sanket Pal](https://dribbble.com/shots/18017895-Crypto-market-watch-App)
 
-## Author
-
-[Your Name]
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Contributing
-
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
