@@ -61,6 +61,7 @@
 		CE5E70422D361EA500C6EA5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CE5EE3562BCB23F900F6B535 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		CE6A1AC12BD655C50065F3CF /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		CE6FC2BA2D49F5CA00012314 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CE7784412BD1700F00682D5A /* CoinImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinImageService.swift; sourceTree = "<group>"; };
 		CE7784442BD177EB00682D5A /* CoinImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinImageView.swift; sourceTree = "<group>"; };
 		CE7784462BD1784B00682D5A /* CoinImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinImageViewModel.swift; sourceTree = "<group>"; };
@@ -104,6 +105,7 @@
 		CE1291842BC2D76E00801F1F = {
 			isa = PBXGroup;
 			children = (
+				CE6FC2BA2D49F5CA00012314 /* README.md */,
 				CE12918F2BC2D76E00801F1F /* CryptoTracker */,
 				CE12918E2BC2D76E00801F1F /* Products */,
 			);
