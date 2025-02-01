@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    @State var selectedTab:Int = 0
+    
     var body: some View {
         NavigationStack{
             ZStack{
@@ -15,12 +18,14 @@ struct HomeView: View {
                     .ignoresSafeArea()
                 
                 VStack{
-                    TabView{
-                        PorfolioView()
+                    TabView(selection: $selectedTab){
+                        PorfolioView(selectedTab: $selectedTab)
                             .tabItem { Label("Portfolio", systemImage: "chart.pie.fill") }
+                            .tag(0)
                         
                         MarketView()
                             .tabItem { Label("Market", systemImage: "chart.bar.xaxis") }
+                            .tag(1)
                     }
                 }
             }

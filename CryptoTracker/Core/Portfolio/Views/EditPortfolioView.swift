@@ -69,7 +69,7 @@ extension EditPorfolioView {
     
     private func updateSelectedCoin() {
         
-        if let portfolioCoin = vm.portfolio.first(where: {
+        if let portfolioCoin = vm.portfolioCoins.first(where: {
             
            return $0.id == selectedCoin.id
         }),

@@ -11,7 +11,7 @@ import Combine
 class HomeViewModel : ObservableObject {
     
     @Published var coins: [CoinModel] = []
-    @Published var portfolio: [CoinModel] = []
+    @Published var portfolioCoins: [CoinModel] = []
     @Published var isLoading: Bool = false
     @Published var searchText: String = ""
     @Published var sortOption: SortOption = .holdings
@@ -58,7 +58,7 @@ class HomeViewModel : ObservableObject {
                 }
             }.sink { [weak self] (updatedCoins) in
                 guard let self = self else { return }
-                self.portfolio = updatedCoins
+                self.portfolioCoins = updatedCoins
             }
             .store(in: &cancellables)
   
