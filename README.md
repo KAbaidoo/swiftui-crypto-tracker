@@ -39,7 +39,9 @@ The project follows the MVVM (Model-View-ViewModel) architecture pattern:
 
 ## Screenshots
 
-[Add your app screenshots here]
+![App launch](screenshots/app_launchscreen.gif)
+![Markets](screenshots/market_view_detail.gif)
+![Edit portfolio](screenshots/edit_portfolio.gif)
 
 ## Credits
 
